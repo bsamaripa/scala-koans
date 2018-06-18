@@ -3,6 +3,8 @@ Koans are small lessons on the path to enlightenment. The aim of the Scala Koans
 
 This project is based on the many versions of ScalaKoans I have found. I wanted to bring this up to current (2.12.x) standards so others can benefit from this. I am no way affiliated with the original authors. Please see [ScalaKoans.org](https://www.scalakoans.org) for more info.
 
+[![Build Status](https://travis-ci.org/bsamaripa/scala-koans.svg?branch=master)](https://travis-ci.org/bsamaripa/scala-koans)
+
 ## Requirements
 sbt or an IDE to run the Koans test class
 
