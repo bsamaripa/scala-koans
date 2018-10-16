@@ -6,7 +6,8 @@ This project is based on the many versions of ScalaKoans I have found. I wanted 
 [![Build Status](https://travis-ci.org/bsamaripa/scala-koans.svg?branch=master)](https://travis-ci.org/bsamaripa/scala-koans)
 
 ## Requirements
-sbt or an IDE to run the Koans test class
+The [Java 8 JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html) and [Scala 2.12](https://www.scala-lang.org/download/) are required to build the project.
+The koans can be run using either the sbt shell or an IDE of your choice, though sbt is preferred because of its simpler setup.
 
 ## Usage
 ```
