@@ -5,7 +5,7 @@ import support.KoanSuite
 import support.BlankValues.__
 
 class AboutLiteralNumbers extends KoanSuite {
-  koan("Integer Literals are 32-bit and can be created from decimal, octal, or hexadecimal") {
+  koan("Integer Literals are 32-bit and can be created from decimal or hexadecimal") {
     val a = 2
     val b = 31
     val c = 0x30F
