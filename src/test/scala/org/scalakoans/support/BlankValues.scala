@@ -3,7 +3,6 @@ package org.scalakoans.support
 import org.scalatest.exceptions.TestPendingException
 import org.scalatest.matchers.Matcher
 
-
 object BlankValues {
 
   class ReplaceWithCorrectException extends Exception
