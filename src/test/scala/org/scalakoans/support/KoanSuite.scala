@@ -1,7 +1,8 @@
 package org.scalakoans.support
 
 import org.scalatest._
-import org.scalatest.events.{Event, TestFailed, TestSucceeded}
+import org.scalatest.events.{Event, TestFailed, TestPending, TestSucceeded}
+
 
 trait KoanSuite extends FunSuite with CancelAfterFailure with Matchers {
 
@@ -25,17 +26,26 @@ trait KoanSuite extends FunSuite with CancelAfterFailure with Matchers {
     class KoanReporter(wrappedReporter: Reporter) extends Reporter {
       var succeeded = false
 
+      type HasTextAndName = {
+        val testText: String
+        val suiteName: String
+      }
+
+      def stopTests(e: HasTextAndName) {
+        note("*****************************************")
+        note("")
+        note(s"Student should meditate on: ${e.testText}")
+        note(s"In ${e.suiteName}")
+        note("")
+        note("*****************************************")
+        args.stopper.requestStop()
+      }
+
       override def apply(event: Event) = {
         event match {
           case e: TestSucceeded => succeeded = true
-          case e: TestFailed =>
-            note("*****************************************")
-            note("")
-            note(s"Student should meditate on: ${e.testText}")
-            note(s"In ${e.suiteName}")
-            note("")
-            note("*****************************************")
-            args.stopper.requestStop()
+          case e: TestFailed => stopTests(e.asInstanceOf[HasTextAndName])
+          case e: TestPending => stopTests(e.asInstanceOf[HasTextAndName])
           case _ =>
         }
         wrappedReporter(event)
