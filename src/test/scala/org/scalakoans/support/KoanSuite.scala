@@ -2,7 +2,7 @@ package org.scalakoans.support
 
 import org.scalatest._
 import org.scalatest.events.{Event, TestFailed, TestPending, TestSucceeded}
-
+import scala.language.reflectiveCalls
 
 trait KoanSuite extends FunSuite with CancelAfterFailure with Matchers {
 
