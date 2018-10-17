@@ -32,12 +32,17 @@ trait KoanSuite extends FunSuite with CancelAfterFailure with Matchers {
       }
 
       def stopTests(e: HasTextAndName) {
-        note("*****************************************")
-        note("")
-        note(s"Student should meditate on: ${e.testText}")
-        note(s"In ${e.suiteName}")
         note("")
         note("*****************************************")
+        note("")
+        note(s"Student should meditate on the koan:")
+        note("")
+        note(s"~~ ${e.testText} ~~")
+        note("")
+        note(s"of the suite ${e.suiteName}.scala")
+        note("")
+        note("*****************************************")
+        note("")
         args.stopper.requestStop()
       }
 
