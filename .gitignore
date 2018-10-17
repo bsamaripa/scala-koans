@@ -1,6 +1,10 @@
-Intellij
-
+# Intellij
 .idea/
+*.iml
+
+# Eclipse
+.classpath
+.project
 
 ### SBT ###
 # Simple Build Tool
