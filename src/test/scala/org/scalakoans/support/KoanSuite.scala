@@ -39,7 +39,7 @@ trait KoanSuite extends FunSuite with CancelAfterFailure with Matchers {
         note("")
         note(s"~~ ${e.testText} ~~")
         note("")
-        note(s"of the suite ${e.suiteName}.scala")
+        note(s"in the suite ${e.suiteName}.scala")
         note("")
         note("*****************************************")
         note("")
