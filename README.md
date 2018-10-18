@@ -11,10 +11,13 @@ The koans can be run using either the sbt shell or an IDE of your choice, though
 
 ## Usage
 ```
-# sbt
+# (using sbt)
 sbt namaste
-or
+# or
 sbt "~testOnly org.scalakoans.Koans"
+
+# run a single test suite
+sbt "~testOnly org.scalakoans.<name of test suite>"
 ```
 
 ## Contributing
