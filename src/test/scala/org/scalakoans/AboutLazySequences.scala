@@ -6,7 +6,7 @@ import support.BlankValues._
 
 class AboutLazySequences extends KoanSuite  {
 
-  koan("Creating a lazy collection form a strict collection") {
+  koan("Lazy collections can be created from strict collections") {
     val strictList = List(10, 20, 30)
     val lazyList = strictList.view
     lazyList.head should be(__)
