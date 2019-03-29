@@ -1,10 +1,15 @@
 package org.scalakoans.support
 
+import org.scalatest.exceptions.TestPendingException
+import org.scalatest.matchers.Matcher
+
 object BlankValues {
 
   class ReplaceWithCorrectException extends Exception
 
-  val __ = "Should be filled in"
+  def  __ : Matcher[Any] = {
+    throw new TestPendingException
+  }
 
   class ___ extends ReplaceWithCorrectException {
     override def toString() = "___"

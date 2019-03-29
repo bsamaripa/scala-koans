@@ -1,6 +1,13 @@
-Intellij
-
+# Intellij
 .idea/
+*.iml
+
+# Eclipse
+.classpath
+.project
+.cache-main
+.cache-tests
+.settings/
 
 ### SBT ###
 # Simple Build Tool
@@ -19,3 +26,4 @@ project/plugins/project/
 ### Scala ###
 *.class
 *.log
+/bin/
