@@ -17,7 +17,7 @@ class AboutLists extends KoanSuite  {
 
   koan("Lists are easily created") {
     val a = List(1, 2, 3)
-    a should equal(List(1, 2, 3))
+    a should equal(__)
   }
 
   koan("Eq tests identity (same object)") {
@@ -30,15 +30,15 @@ class AboutLists extends KoanSuite  {
 
   koan("Lists can be accessed via head and tail") {
     val a = List(1, 2, 3)
-    a.head should equal(1)
-    a.tail should equal(List(2, 3))
+    a.head should equal(__)
+    a.tail should equal(__)
   }
 
   koan("Lists can be accessed at random") {
     val a = List(1, 3, 5, 7, 9)
-    a(0) should equal(1)
-    a(1) should equal(3)
-    a(4) should equal(9)
+    a(0) should equal(__)
+    a(1) should equal(__)
+    a(4) should equal(__)
     intercept[IndexOutOfBoundsException] {
       println(a(5))
     }
@@ -48,63 +48,63 @@ class AboutLists extends KoanSuite  {
     val a = List(1, 3, 5, 7, 9)
     val b = a.filterNot(v => v == 5) // remove where value is 5
 
-    a should equal(List(1, 3, 5, 7, 9))
-    b should equal(List(1, 3, 7, 9))
+    a should equal(__)
+    b should equal(__)
   }
 
   koan("Lists have many useful methods") {
     val a = List(1, 3, 5, 7, 9)
 
     // get the length of the list
-    a.length should equal(5)
+    a.length should equal(__)
 
     // reverse the list
-    a.reverse should equal(List(9, 7, 5, 3, 1))
+    a.reverse should equal(__)
 
     // convert the list to a string representation
-    a.toString should equal("List(1, 3, 5, 7, 9)")
+    a.toString should equal(__)
 
     // map a function to double the numbers over the list
     a.map {
       v => v * 2
-    } should equal(List(2, 6, 10, 14, 18))
+    } should equal(__)
 
     // filter out any values divisible by 3 in the list
     a.filter {
       v => v % 3 == 0
-    } should equal(List(3, 9))
+    } should equal(__)
   }
 
   koan("Functions over lists can use _ as shorthand") {
     val a = List(1, 2, 3)
     a.map {
       _ * 2
-    } should equal(List(2, 4, 6))
+    } should equal(__)
     a.filter {
       _ % 2 == 0
-    } should equal(List(2))
+    } should equal(__)
   }
 
   koan("Functions over lists can use () instead of {}") {
     val a = List(1, 2, 3)
-    a.map(_ * 2) should equal(List(2, 4, 6))
-    a.filter(_ % 2 != 0) should equal(List(1, 3))
+    a.map(_ * 2) should equal(__)
+    a.filter(_ % 2 != 0) should equal(__)
   }
 
   koan("Lists can be 'reduced' with a mathematical operation") {
     val a = List(1, 3, 5, 7)
     // note the two _s below indicate the first and second args respectively
-    a.reduceLeft(_ + _) should equal(16)
-    a.reduceLeft(_ * _) should equal(105)
+    a.reduceLeft(_ + _) should equal(__)
+    a.reduceLeft(_ * _) should equal(__)
   }
 
   koan("Foldleft is like reduce, but with an explicit starting value") {
     val a = List(1, 3, 5, 7)
     // foldLeft uses a form called currying that we will explore later
-    a.foldLeft(0)(_ + _) should equal(16)
-    a.foldLeft(10)(_ + _) should equal(26)
-    a.foldLeft(1)(_ * _) should equal(105)
-    a.foldLeft(0)(_ * _) should equal(0)
+    a.foldLeft(0)(_ + _) should equal(__)
+    a.foldLeft(10)(_ + _) should equal(__)
+    a.foldLeft(1)(_ * _) should equal(__)
+    a.foldLeft(0)(_ * _) should equal(__)
   }
 
   koan("You can create a list from a range") {
