@@ -83,10 +83,10 @@ class AboutIterables extends KoanSuite  {
   koan("""`sameElements` will return true if the two iterables have the same number of elements""") {
     val xs = List("Manny", "Moe", "Jack")
     val ys = List("Manny", "Moe", "Jack")
-    (xs sameElements ys) should be (true)
+    (xs sameElements ys) should be (__)
 
     val xs1 = Set(3,2,1,4,5,6,7)
     val ys1 = Set(7,2,1,4,5,6,3)
-    (xs1 sameElements ys1) should be (true)
+    (xs1 sameElements ys1) should be (__)
   }
 }
