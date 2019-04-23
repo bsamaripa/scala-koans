@@ -5,7 +5,7 @@ addCommandAlias("namaste", "~testOnly org.scalakoans.Koans")
 lazy val root = (project in file("."))
   .settings(
     name := "Scala Koans Neo",
-    scalaVersion := "2.12.6",
+    scalaVersion := "2.12.8",
     version      := "2.0",
     organization := "org.scalakoans",
     libraryDependencies ++= backendDeps,
