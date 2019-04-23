@@ -545,6 +545,6 @@ class AboutTraversables extends KoanSuite  {
   koan("""Views can also accept a `to` and `from` value which takes the substring and performs your view
          |  functions on the subset.""") {
     val list = List(1,2,3,4,5,6,7,8)
-    list.view(3,6).map(_+2).map(_*10).force should be (List(60,70,80))
+    list.view(3,6).map(_+2).map(_*10).force should be (__)
   }
 }

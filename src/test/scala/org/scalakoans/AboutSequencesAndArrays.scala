@@ -9,14 +9,14 @@ class AboutSequencesAndArrays extends KoanSuite  {
   koan("A list can be converted to an array") {
     val l = List(1, 2, 3)
     val a = l.toArray
-    a should equal(Array(1, 2, 3))
+    a should equal(__)
   }
 
   koan("Any sequence can be converted to a list") {
     val a = Array(1, 2, 3)
     val s = a.toSeq
     val l = s.toList
-    l should equal(List(1, 2, 3))
+    l should equal(__)
   }
 
   koan("You can create a sequence from a for comprehension") {
