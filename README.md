@@ -3,7 +3,7 @@ Koans are small lessons on the path to enlightenment. The aim of the Scala Koans
 
 This project is based on the many versions of ScalaKoans I have found. I wanted to bring this up to current (2.12.x) standards so others can benefit from this. I am no way affiliated with the original authors. Please see [ScalaKoans.org](https://www.scalakoans.org) for more info.
 
-![Scala Koans](https://github.com/bsamaripa/scala-koans/workflows/Scala%20Koans/badge.svg?branch=master)
+[![Scala Koans](https://github.com/bsamaripa/scala-koans/workflows/Scala%20Koans/badge.svg?branch=master)](https://github.com/bsamaripa/scala-koans/actions)
 
 ## Requirements
 The [Java 8 JDK](https://www.oracle.com/technetwork/java/javase/downloads/index.html) and [sbt 1.x](https://www.scala-sbt.org/download.html) are required to build this project. Included is an `sbt` script that should run without installing sbt on your system.
