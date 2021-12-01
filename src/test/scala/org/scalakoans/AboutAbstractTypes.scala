@@ -9,7 +9,7 @@ class AboutAbstractTypes extends KoanSuite {
     type G = Int
     val x: G = 3
     val y: G = 5
-    (x + y) should be(__)
+    (x + y) should be(8)
   }
 
   koan("""Abstract types are types that are declared in an abstract class, and
@@ -28,7 +28,7 @@ class AboutAbstractTypes extends KoanSuite {
       def generate = "Scooters are fun"
     }
 
-    new StringGenerator().generate should be(__)
+    new StringGenerator().generate should be("Scooters are fun")
   }
 
   koan("Abstract types can also be included in a trait") {
@@ -42,7 +42,7 @@ class AboutAbstractTypes extends KoanSuite {
       override def count(c: String) = c.size
     }
 
-    new CharacterCounter().count("Boolean") should be(__)
+    new CharacterCounter().count("Boolean") should be(7)
   }
 
   koan("""Abstract types are also by default public, the can be locked down with an
@@ -57,7 +57,7 @@ class AboutAbstractTypes extends KoanSuite {
       override def count(c: String) = c.size
     }
 
-    new CharacterCounter().count("Awesome") should be(__)
+    new CharacterCounter().count("Awesome") should be(7)
   }
 
 
@@ -91,7 +91,8 @@ class AboutAbstractTypes extends KoanSuite {
     }
 
     //new Cow().feedMe(new DogFood)  this wont compile, because it's not right
-    new Cow().feedMe(new Hay()) should be (__)
+    new Cow().feedMe(new Hay()) should be ("Nom Nom, I am eating Hay")
+    new Dog().feedMe(new DogFood()) should be ("Nom Nom, I am eating Dog Food")
   }
 
   koan("""Abstract Types can be any type even a type with type parameter""") {
@@ -107,6 +108,6 @@ class AboutAbstractTypes extends KoanSuite {
       //only available with Numeric types
     }
 
-    new IntListCounter().count(List(1,2,3,4)) should be (__)
+    new IntListCounter().count(List(1,2,3,4)) should be (10)
   }
 }
