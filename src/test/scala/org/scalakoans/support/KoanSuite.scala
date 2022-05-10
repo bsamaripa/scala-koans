@@ -33,7 +33,7 @@ trait KoanSuite extends AnyFunSuite with CancelAfterFailure with Matchers {
         val suiteName: String
       }
 
-      def stopTests(e: HasTextAndName) {
+      def stopTests(e: HasTextAndName): Unit = {
         note("")
         note("*****************************************")
         note("")

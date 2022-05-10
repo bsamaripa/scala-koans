@@ -23,14 +23,14 @@ class AboutMutableMaps extends KoanSuite  {
 
   koan("Mutable maps can have tuples of elements removed") {
     val myMap = mutable.Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
-    myMap -= ("IA", "OH")
+    myMap --= List("IA", "OH")
     myMap contains "OH" should be(__)
     myMap.size should be(__)
   }
 
   koan("Mutable maps can have tuples of elements added") {
     val myMap = mutable.Map("MI" -> "Michigan", "WI" -> "Wisconsin")
-    myMap += ("IA" -> "Iowa", "OH" -> "Ohio")
+    myMap ++= Map("IA" -> "Iowa", "OH" -> "Ohio")
     myMap contains "OH" should be(__)
     myMap.size should be(__)
   }

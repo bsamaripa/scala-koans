@@ -7,7 +7,7 @@ class AboutConstructors extends KoanSuite {
 
   class AboutConstructorWithValParameter(val name: String) {
     // invoke auxilary constructor
-    def this() {
+    def this() = {
       // what happens if you comment out the following line?
       this ("defaultname")
     }

@@ -2,13 +2,12 @@ package org.scalakoans
 
 import support.KoanSuite
 import support.BlankValues.__
-import Stream._
 import collection.immutable.{TreeMap, TreeSet}
 
 class AboutTraversables extends KoanSuite  {
 
-  koan("""Traverables are the superclass of Lists, Arrays, Maps, Sets, Streams, and more.  
-          |   The methods involved can be applied to each other in a different type.  ++ appends 
+  koan("""Traverables are the superclass of Lists, Arrays, Maps, Sets, Streams, and more.
+          |   The methods involved can be applied to each other in a different type.  ++ appends
           |   two Traversables together.""") {
 
     val set = Set(1, 9, 10, 22)
@@ -127,8 +126,8 @@ class AboutTraversables extends KoanSuite  {
           |  which is a lazy lists where elements are evaluated as they
           |  are needed.""") {
     val list = List(4, 6, 7, 8, 9, 13, 14)
-    val result = list.toStream
-    result.isInstanceOf[Stream[Int]] should be(__)
+    val result = list.to(LazyList)
+    result.isInstanceOf[LazyList[Int]] should be(__)
     (result take 3) should be(__)
   }
 
@@ -175,14 +174,14 @@ class AboutTraversables extends KoanSuite  {
     map.size should be(__)
   }
 
-  koan("""hasDefiniteSize will return true if there is traversable that has a 
+  koan("""hasDefiniteSize will return true if there is traversable that has a
           finite end, otherwise false""") {
     val map = Map("Phoenix" -> "Arizona", "Austin" -> "Texas")
-    map.hasDefiniteSize should be(__)
+    map.knownSize should be(__)
 
-    import Stream.cons
-    val stream = cons(0, cons(1, Stream.empty))
-    stream.hasDefiniteSize should be(__)
+    import LazyList.cons
+    val lazyList = cons(0, cons(1, LazyList.empty))
+    lazyList.knownSize should be(__)
   }
 
   koan("""head will return the first element of an ordered collection, or some random
@@ -192,7 +191,7 @@ class AboutTraversables extends KoanSuite  {
   }
 
   koan("""headOption will return the first element as an Option of an order collection,
-          | or some random element if order is not defined.  If a first element 
+          | or some random element if order is not defined.  If a first element
           | is not available, then None is returned""") {
     val list = List(10, 19, 45, 1, 22)
     list.headOption should be(__)
@@ -208,7 +207,7 @@ class AboutTraversables extends KoanSuite  {
   }
 
   koan("""lastOption will return the first element as an Option of an order collection,
-          | or some random element if order is not defined.  If a first element 
+          | or some random element if order is not defined.  If a first element
           | is not available, then None is returned""") {
     val list = List(10, 19, 45, 1, 22)
     list.lastOption should be(__)
@@ -217,7 +216,7 @@ class AboutTraversables extends KoanSuite  {
     list2.lastOption should be(__)
   }
 
-  koan("""find will locate an the first item that matches a predicate p as Some or None if 
+  koan("""find will locate an the first item that matches a predicate p as Some or None if
     | an element is not found""") {
     val list = List(10, 19, 45, 1, 22)
     list.find(_ % 2 != 0) should be(__)
@@ -248,14 +247,14 @@ class AboutTraversables extends KoanSuite  {
   }
 
   koan("""Take is used often with Streams, and Streams after all are Traversable""") {
-    def streamer(v: Int): Stream[Int] = cons(v, streamer(v + 1))
+    def streamer(v: Int): LazyList[Int] = LazyList.cons(v, streamer(v + 1))
     val a = streamer(2)
     a.take(3).toList should be(__)
   }
 
   koan("""Drop will take the rest of the Traversable except
           |  the number of elements given""") {
-    def streamer(v: Int): Stream[Int] = cons(v, streamer(v + 1))
+    def streamer(v: Int): LazyList[Int] = LazyList.cons(v, streamer(v + 1))
     val a = streamer(2)
     (a.drop(6)).take(3).toList should be(__)
   }
@@ -381,7 +380,7 @@ class AboutTraversables extends KoanSuite  {
            | Given a Traversable (x1, x2, x3, x4), an initial value of init, an operation op,
            | foldLeft is defined as: (((init op x1) op x2) op x3) op x4)""") {
     val list = List(5, 4, 3, 2, 1)
-    val result = (0 /: list) {
+    val result = list.foldLeft(0) {
       (`running total`, `next element`) => `running total` - `next element`
     }
     result should be(__)
@@ -391,7 +390,7 @@ class AboutTraversables extends KoanSuite  {
     }
     result2 should be(__)
 
-    val result3 = (0 /: list)(_ - _) //Short hand
+    val result3 = list.foldLeft(0)(_ - _) //Short hand
     result3 should be(__)
 
     val result4 = list.foldLeft(0)(_ - _)
@@ -409,17 +408,17 @@ class AboutTraversables extends KoanSuite  {
            | foldRight is defined as: x1 op (x2 op (x3 op (x4 op init)))""") {
 
     val list = List(5, 4, 3, 2, 1)
-    val result = (list :\ 0) {
+    val result = list.foldLeft(0) {
       (`next element`, `running total`) => `next element` - `running total`
     }
     result should be(__)
 
-    val result2 = (list :\ 0) {
+    val result2 = list.foldLeft(0) {
       (`next element`, `running total`) => `next element` - `running total`
     }
     result2 should be(__)
 
-    val result3 = (list :\ 0)(_ - _) //Short hand
+    val result3 = list.foldLeft(0)(_ - _) //Short hand
     result3 should be(__)
 
     val result4 = list.foldRight(0)(_ - _)
@@ -532,7 +531,7 @@ class AboutTraversables extends KoanSuite  {
     history = List[String]()
 
     lst.view.map {x => addHistory("Doubling %s".format(x)); x * 2}
-            .map {x => addHistory("Adding 1 to %s".format(x)); x + 1}.force
+            .map {x => addHistory("Adding 1 to %s".format(x)); x + 1}.toIndexedSeq
 
     history(0) should be(__)
     history(1) should be(__)
@@ -545,6 +544,6 @@ class AboutTraversables extends KoanSuite  {
   koan("""Views can also accept a `to` and `from` value which takes the substring and performs your view
          |  functions on the subset.""") {
     val list = List(1,2,3,4,5,6,7,8)
-    list.view(3,6).map(_+2).map(_*10).force should be (__)
+    list.view.slice(3,6).map(_+2).map(_*10).toIndexedSeq should be (__)
   }
 }
