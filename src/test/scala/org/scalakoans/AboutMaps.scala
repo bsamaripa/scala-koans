@@ -114,7 +114,7 @@ class AboutMaps extends KoanSuite  {
 
   koan("Map elements can be removed with a tuple") {
     val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
-    val aNewMap = myMap - ("MI", "WI") // Notice: single '-' operator for tuples
+    val aNewMap = myMap -- List("MI", "WI") // Notice: single '-' operator for tuples
 
     aNewMap.contains("MI") should be(__)
     aNewMap.contains("OH") should be(__)

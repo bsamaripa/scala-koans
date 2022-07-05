@@ -11,7 +11,7 @@ class AboutIterables extends KoanSuite  {
     val list = List(3, 5, 9, 11, 15, 19, 21)
     val it = list.iterator
     if (it.hasNext) {
-      it.next should be(__)
+      it.next() should be(__)
     }
   }
 
@@ -34,7 +34,7 @@ class AboutIterables extends KoanSuite  {
   koan("""`sliding` can take the size of the window as well the size of the step during each
           | iteration""") {
     val list = List(3, 5, 9, 11, 15, 19, 21, 24, 32)
-    val it = list sliding (3, 3)
+    val it = list.sliding(3, 3)
     it.next() should be(__)
     it.next() should be(__)
     it.next() should be(__)
@@ -72,7 +72,7 @@ class AboutIterables extends KoanSuite  {
           |  return ((x1,y1), (x2, y2, y))""") {
     val xs = List(3, 5, 9)
     val ys = List("Bob", "Ann")
-    (xs zipAll (ys, -1, "?")) should be(__)
+    (xs.zipAll(ys, -1, "?")) should be(__)
   }
 
   koan("""`zipWithIndex` will zip an Iterable with it's integer index""") {
@@ -87,6 +87,6 @@ class AboutIterables extends KoanSuite  {
 
     val xs1 = Set(3,2,1,4,5,6,7)
     val ys1 = Set(7,2,1,4,5,6,3)
-    (xs1 sameElements ys1) should be (__)
+    (xs1.iterator.sameElements(ys1)) should be (__)
   }
 }

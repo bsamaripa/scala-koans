@@ -28,7 +28,7 @@ class AboutLiterals extends KoanSuite  {
     val b = 31L
     val c = 0x30FL
     val e = 0L
-    val f = -2l
+    val f = -2L
     val g = -31L
     val h = -0x30FL
 

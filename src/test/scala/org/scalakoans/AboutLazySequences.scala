@@ -18,7 +18,7 @@ class AboutLazySequences extends KoanSuite  {
       x += 1;
       x
     }
-    var strictList = List(inc _, inc _, inc _)
+    var strictList = List(() => inc, () => inc, () => inc)
     strictList.map(f => f()).head should be(__)
     x should be(__)
     strictList.map(f => f()).head
@@ -44,14 +44,14 @@ class AboutLazySequences extends KoanSuite  {
   }
 
   koan("Lazy collections could also be infinite") {
-    val infinite = Stream.from(1)
+    val infinite = LazyList.from(1)
     infinite.take(4).sum should be(__)
-    Stream.continually(1).take(4).sum should be(__)
+    LazyList.continually(1).take(4).sum should be(__)
   }
 
   koan("Always remember tail of a lazy collection is never computed unless required") {
-    def makeLazy(value: Int): Stream[Int] = {
-      Stream.cons(value, makeLazy(value + 1))
+    def makeLazy(value: Int): LazyList[Int] = {
+      LazyList.cons(value, makeLazy(value + 1))
     }
     val stream = makeLazy(1)
     stream.head should be(__)

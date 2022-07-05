@@ -28,7 +28,7 @@ class AboutLiteralNumbers extends KoanSuite {
     val b = 31L
     val c = 0x30FL
     val d = 0L
-    val g = -2l
+    val g = -2L
     val h = -31L
     val i = -0x30FL
 

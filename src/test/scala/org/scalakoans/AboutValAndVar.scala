@@ -23,7 +23,7 @@ class AboutValAndVar extends KoanSuite  {
 
   koan("vals or vars can have the same name as a keyword as long as it's surrounded by `") {
     val `class` = "MyClassName"
-    `class` should be(__)
+    `class`.shouldBe(__)
   }
 
 

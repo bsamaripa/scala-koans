@@ -96,7 +96,7 @@ class AboutAbstractTypes extends KoanSuite {
 
   koan("""Abstract Types can be any type even a type with type parameter""") {
     trait Counter {
-      type T <: Traversable[_] //The _ means it is existential, in this case
+      type T <: Iterable[_] //The _ means it is existential, in this case
       //I don't care what kind of Traversable it is.
       def count(t:T) = t.size  //I know it's a Traversable but I'll define later which one.
     }
