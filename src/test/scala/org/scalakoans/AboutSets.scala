@@ -58,14 +58,6 @@ class AboutSets extends KoanSuite  {
     aNewSet.size should be(__)
   }
 
-  koan("Set elements can be removed with a tuple") {
-    val mySet = Set("Michigan", "Ohio", "Wisconsin", "Iowa")
-    val aNewSet = mySet.removedAll(Set("Michigan", "Ohio"))
-
-    aNewSet.contains("Michigan") should be(__)
-    aNewSet.contains("Wisconsin") should be(__)
-    aNewSet.size should be(__)
-  }
   koan("Attempted removal of nonexistent elements from a set is handled gracefully") {
     val mySet = Set("Michigan", "Ohio", "Wisconsin", "Iowa")
     val aNewSet = mySet - "Minnesota"
@@ -124,7 +116,5 @@ class AboutSets extends KoanSuite  {
 
     mySet1.equals(mySet2) should be(__)
   }
-
-
 
 }
