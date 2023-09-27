@@ -112,15 +112,6 @@ class AboutMaps extends KoanSuite  {
     aNewMap.size should be(__)
   }
 
-  koan("Map elements can be removed with a tuple") {
-    val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
-    val aNewMap = myMap -- List("MI", "WI") // Notice: single '-' operator for tuples
-
-    aNewMap.contains("MI") should be(__)
-    aNewMap.contains("OH") should be(__)
-    aNewMap.size should be(__)
-  }
-
   koan("Attempted removal of nonexistent elements from a map is handled gracefully") {
     val myMap = Map("MI" -> "Michigan", "OH" -> "Ohio", "WI" -> "Wisconsin", "IA" -> "Iowa")
     val aNewMap = myMap - "MN"
